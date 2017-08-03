@@ -1,6 +1,8 @@
 var app = function(){
   var url = "https://api.punkapi.com/v2/beers";
   makeRequest(url, requestComplete)
+
+  showList(JSON.parse(localStorage.getItem("savedThatBeer")))
 }
 
 var makeRequest = function(url, callback) {
@@ -50,8 +52,9 @@ var showList = function(beer) {
   ul.appendChild(listItem4);
   }
 
-  var save = function() {
-
+  var save = function(beer) {
+    var jsonThatBeer = JSON.stringify(beer)
+    localStorage.setItem("savedThatBeer", jsonThatBeer);
   }
 
 window.addEventListener('load', app);
